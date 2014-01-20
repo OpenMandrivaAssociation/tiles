@@ -1,0 +1,47 @@
+<dependencies>
+<dependency>
+    <maven>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>7.0.27</version>
+    </maven>
+    <jpp>
+        <groupId>JPP</groupId>
+        <artifactId>tomcat-servlet-3.0-api</artifactId>
+    </jpp>
+</dependency>
+<dependency>
+    <maven>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jsp-api</artifactId>
+        <version>7.0.27</version>
+    </maven>
+    <jpp>
+        <groupId>JPP</groupId>
+        <artifactId>tomcat-jsp-2.2-api</artifactId>
+    </jpp>
+</dependency>
+<dependency>
+    <maven>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-el-api</artifactId>
+        <version>7.0.27</version>
+    </maven>
+    <jpp>
+        <groupId>JPP</groupId>
+        <artifactId>tomcat-el-2.2-api</artifactId>
+    </jpp>
+</dependency>
+<dependency>
+    <maven>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jasper-el</artifactId>
+        <version>7.0.27</version>
+    </maven>
+    <jpp>
+        <groupId>JPP/tomcat</groupId>
+        <artifactId>jasper-el</artifactId>
+    </jpp>
+</dependency>
+
+</dependencies>

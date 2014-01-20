@@ -1,0 +1,144 @@
+diff -Nru tiles-2.2.2/src/tiles-ognl/pom.xml tiles-2.2.2-gil/src/tiles-ognl/pom.xml
+--- tiles-2.2.2/src/tiles-ognl/pom.xml	2010-06-17 20:31:47.000000000 +0200
++++ tiles-2.2.2-gil/src/tiles-ognl/pom.xml	2012-05-26 23:47:08.921350602 +0200
+@@ -114,9 +114,9 @@
+       <scope>test</scope>
+     </dependency>
+     <dependency>
+-      <groupId>ognl</groupId>
+-      <artifactId>ognl</artifactId>
+-      <version>2.7.3</version>
++      <groupId>org.apache.commons</groupId>
++      <artifactId>commons-ognl</artifactId>
++      <version>4.0-incubating-SNAPSHOT</version>
+     </dependency>
+   </dependencies>
+ 
+diff -Nru tiles-2.2.2/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/DelegatePropertyAccessor.java tiles-2.2.2-gil/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/DelegatePropertyAccessor.java
+--- tiles-2.2.2/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/DelegatePropertyAccessor.java	2010-06-17 20:31:47.000000000 +0200
++++ tiles-2.2.2-gil/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/DelegatePropertyAccessor.java	2012-05-26 23:47:08.931350602 +0200
+@@ -23,9 +23,9 @@
+ 
+ import java.util.Map;
+ 
+-import ognl.OgnlContext;
+-import ognl.OgnlException;
+-import ognl.PropertyAccessor;
++import org.apache.commons.ognl.OgnlContext;
++import org.apache.commons.ognl.OgnlException;
++import org.apache.commons.ognl.PropertyAccessor;
+ 
+ /**
+  * Uses a {@link PropertyAccessorDelegateFactory} to delegate the methods to
+diff -Nru tiles-2.2.2/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/NestedObjectDelegatePropertyAccessor.java tiles-2.2.2-gil/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/NestedObjectDelegatePropertyAccessor.java
+--- tiles-2.2.2/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/NestedObjectDelegatePropertyAccessor.java	2010-06-17 20:31:47.000000000 +0200
++++ tiles-2.2.2-gil/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/NestedObjectDelegatePropertyAccessor.java	2012-05-26 23:47:08.937350602 +0200
+@@ -23,9 +23,9 @@
+ 
+ import java.util.Map;
+ 
+-import ognl.OgnlContext;
+-import ognl.OgnlException;
+-import ognl.PropertyAccessor;
++import org.apache.commons.ognl.OgnlContext;
++import org.apache.commons.ognl.OgnlException;
++import org.apache.commons.ognl.PropertyAccessor;
+ 
+ /**
+  * Uses a {@link PropertyAccessor} as a delegate, but passing a nested object as
+diff -Nru tiles-2.2.2/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/OGNLAttributeEvaluator.java tiles-2.2.2-gil/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/OGNLAttributeEvaluator.java
+--- tiles-2.2.2/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/OGNLAttributeEvaluator.java	2010-06-17 20:31:47.000000000 +0200
++++ tiles-2.2.2-gil/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/OGNLAttributeEvaluator.java	2012-05-26 23:47:08.935350602 +0200
+@@ -23,8 +23,8 @@
+ 
+ import java.util.Map;
+ 
+-import ognl.Ognl;
+-import ognl.OgnlException;
++import org.apache.commons.ognl.Ognl;
++import org.apache.commons.ognl.OgnlException;
+ 
+ import org.apache.tiles.context.TilesRequestContext;
+ import org.apache.tiles.evaluator.AbstractAttributeEvaluator;
+diff -Nru tiles-2.2.2/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/PropertyAccessorDelegateFactory.java tiles-2.2.2-gil/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/PropertyAccessorDelegateFactory.java
+--- tiles-2.2.2/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/PropertyAccessorDelegateFactory.java	2010-06-17 20:31:47.000000000 +0200
++++ tiles-2.2.2-gil/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/PropertyAccessorDelegateFactory.java	2012-05-26 23:47:08.932350602 +0200
+@@ -21,7 +21,7 @@
+ 
+ package org.apache.tiles.ognl;
+ 
+-import ognl.PropertyAccessor;
++import org.apache.commons.ognl.PropertyAccessor;
+ 
+ /**
+  * Decides a {@link PropertyAccessor} depending on the property name and the
+diff -Nru tiles-2.2.2/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/TilesContextPropertyAccessorDelegateFactory.java tiles-2.2.2-gil/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/TilesContextPropertyAccessorDelegateFactory.java
+--- tiles-2.2.2/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/TilesContextPropertyAccessorDelegateFactory.java	2010-06-17 20:31:47.000000000 +0200
++++ tiles-2.2.2-gil/src/tiles-ognl/src/main/java/org/apache/tiles/ognl/TilesContextPropertyAccessorDelegateFactory.java	2012-05-26 23:47:08.939350602 +0200
+@@ -23,7 +23,7 @@
+ 
+ import java.util.Map;
+ 
+-import ognl.PropertyAccessor;
++import org.apache.commons.ognl.PropertyAccessor;
+ 
+ import org.apache.tiles.TilesApplicationContext;
+ import org.apache.tiles.context.TilesRequestContext;
+diff -Nru tiles-2.2.2/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/DelegatePropertyAccessorTest.java tiles-2.2.2-gil/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/DelegatePropertyAccessorTest.java
+--- tiles-2.2.2/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/DelegatePropertyAccessorTest.java	2010-06-17 20:31:47.000000000 +0200
++++ tiles-2.2.2-gil/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/DelegatePropertyAccessorTest.java	2012-05-26 23:47:08.945350602 +0200
+@@ -26,9 +26,9 @@
+ 
+ import java.util.Map;
+ 
+-import ognl.OgnlContext;
+-import ognl.OgnlException;
+-import ognl.PropertyAccessor;
++import org.apache.commons.ognl.OgnlContext;
++import org.apache.commons.ognl.OgnlException;
++import org.apache.commons.ognl.PropertyAccessor;
+ 
+ import org.apache.tiles.ognl.DelegatePropertyAccessor;
+ import org.apache.tiles.ognl.PropertyAccessorDelegateFactory;
+diff -Nru tiles-2.2.2/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/NestedObjectDelegatePropertyAccessorTest.java tiles-2.2.2-gil/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/NestedObjectDelegatePropertyAccessorTest.java
+--- tiles-2.2.2/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/NestedObjectDelegatePropertyAccessorTest.java	2010-06-17 20:31:47.000000000 +0200
++++ tiles-2.2.2-gil/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/NestedObjectDelegatePropertyAccessorTest.java	2012-05-26 23:47:08.942350602 +0200
+@@ -26,9 +26,9 @@
+ 
+ import java.util.Map;
+ 
+-import ognl.OgnlContext;
+-import ognl.OgnlException;
+-import ognl.PropertyAccessor;
++import org.apache.commons.ognl.OgnlContext;
++import org.apache.commons.ognl.OgnlException;
++import org.apache.commons.ognl.PropertyAccessor;
+ 
+ import org.apache.tiles.ognl.NestedObjectDelegatePropertyAccessor;
+ import org.apache.tiles.ognl.NestedObjectExtractor;
+diff -Nru tiles-2.2.2/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/OGNLAttributeEvaluatorTest.java tiles-2.2.2-gil/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/OGNLAttributeEvaluatorTest.java
+--- tiles-2.2.2/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/OGNLAttributeEvaluatorTest.java	2010-06-17 20:31:47.000000000 +0200
++++ tiles-2.2.2-gil/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/OGNLAttributeEvaluatorTest.java	2012-05-26 23:47:08.943350602 +0200
+@@ -25,8 +25,8 @@
+ 
+ import junit.framework.TestCase;
+ 
+-import ognl.OgnlRuntime;
+-import ognl.PropertyAccessor;
++import org.apache.commons.ognl.OgnlRuntime;
++import org.apache.commons.ognl.PropertyAccessor;
+ 
+ import org.apache.tiles.Attribute;
+ import org.apache.tiles.Expression;
+diff -Nru tiles-2.2.2/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/TilesContextPropertyAccessorDelegateFactoryTest.java tiles-2.2.2-gil/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/TilesContextPropertyAccessorDelegateFactoryTest.java
+--- tiles-2.2.2/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/TilesContextPropertyAccessorDelegateFactoryTest.java	2010-06-17 20:31:47.000000000 +0200
++++ tiles-2.2.2-gil/src/tiles-ognl/src/test/java/org/apache/tiles/ognl/TilesContextPropertyAccessorDelegateFactoryTest.java	2012-05-26 23:47:08.944350602 +0200
+@@ -27,7 +27,7 @@
+ import java.util.HashMap;
+ import java.util.Map;
+ 
+-import ognl.PropertyAccessor;
++import org.apache.commons.ognl.PropertyAccessor;
+ 
+ import org.apache.tiles.TilesApplicationContext;
+ import org.apache.tiles.context.TilesRequestContext;

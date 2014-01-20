@@ -1,0 +1,10 @@
+--- src/pom.xml	2012-05-27 00:38:23.845328560 +0200
++++ src/pom.xml-gil	2012-05-27 00:45:06.523325673 +0200
+@@ -27,6 +27,7 @@
+         <groupId>org.apache.tiles</groupId>
+         <artifactId>tiles-master</artifactId>
+         <version>3</version>
++        <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+     <modelVersion>4.0.0</modelVersion>
