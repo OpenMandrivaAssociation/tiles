@@ -2,8 +2,9 @@
 %global master_version 3
 Name:          tiles
 Version:       2.2.2
-Release:       9.0%{?dist}
+Release:       11.1
 Summary:       Java templating framework for web application user interfaces
+Group:         Development/Java
 License:       ASL 2.0
 Url:           http://tiles.apache.org/
 Source0:       http://www.apache.org/dist/%{name}/v%{version}/%{name}-%{version}-src.tar.gz
@@ -38,6 +39,8 @@ BuildRequires: tomcat-el-2.2-api
 BuildRequires: tomcat-jsp-2.2-api
 BuildRequires: tomcat-servlet-3.0-api
 BuildRequires: velocity-tools
+BuildRequires: mvn(org.slf4j:jcl-over-slf4j)
+BuildRequires: mvn(org.slf4j:slf4j-jdk14)
 
 # test deps
 %if 0
@@ -53,7 +56,7 @@ BuildRequires: maven-resources-plugin
 
 # requires by remote-resources-plugin
 BuildRequires: mvn(org.apache.maven.shared:maven-artifact-resolver)
-BuildRequires: mvn(org.apache.maven.shared:maven-shared-components)
+BuildRequires: mvn(org.apache.maven.shared:maven-shared-components:pom:)
 
 BuildArch:     noarch
 
@@ -96,7 +99,32 @@ This package contains javadoc for %{name}.
 
 sed -i "s|<artifactId>jasper-el|<artifactId>tomcat-jasper-el|" src/tiles-el/pom.xml
 
-cp -p %{SOURCE1} pom.xml
+sed -i "s|<groupId>javax.servlet</groupId>|<groupId>org.apache.tomcat</groupId>|" src/tiles-core/pom.xml \
+ src/tiles-api/pom.xml \
+ src/tiles-velocity/pom.xml \
+ src/tiles-servlet/pom.xml \
+ src/tiles-compat/pom.xml \
+ src/tiles-portlet/pom.xml \
+ src/tiles-jsp/pom.xml \
+ src/tiles-extras/pom.xml \
+ src/tiles-freemarker/pom.xml \
+ src/tiles-el/pom.xml \
+ src/tiles-servlet-wildcard/pom.xml
+
+sed -i "s|<artifactId>servlet-api</artifactId>|<artifactId>tomcat-servlet-api</artifactId>|" src/tiles-core/pom.xml \
+ src/tiles-api/pom.xml \
+ src/tiles-velocity/pom.xml \
+ src/tiles-servlet/pom.xml \
+ src/tiles-compat/pom.xml \
+ src/tiles-portlet/pom.xml \
+ src/tiles-jsp/pom.xml \
+ src/tiles-extras/pom.xml \
+ src/tiles-freemarker/pom.xml \
+ src/tiles-el/pom.xml \
+ src/tiles-servlet-wildcard/pom.xml
+
+%pom_remove_parent src
+#cp -p %{SOURCE1} pom.xml
 
 %build
 
@@ -128,13 +156,8 @@ cd src
 %mvn_install
 )
 
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/JPP.%{name}-master.pom
-%add_maven_depmap JPP.%{name}-master.pom
-
 %files -f src/.mfiles
 %dir %{_javadir}/%{name}
-%{_mavenpomdir}/JPP.%{name}-master.pom
-%{_mavendepmapfragdir}/%{name}
 %doc LICENSE.txt NOTICE.txt
 
 %files javadoc -f src/.mfiles-javadoc
