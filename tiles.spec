@@ -2,7 +2,7 @@
 %global master_version 3
 Name:          tiles
 Version:       2.2.2
-Release:       11.2
+Release:       11.3
 Summary:       Java templating framework for web application user interfaces
 Group:         Development/Java
 License:       ASL 2.0
