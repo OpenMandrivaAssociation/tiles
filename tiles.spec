@@ -6,7 +6,7 @@ Release:       11.3
 Summary:       Java templating framework for web application user interfaces
 Group:         Development/Java
 License:       ASL 2.0
-Url:           http://tiles.apache.org/
+Url:           https://tiles.apache.org/
 Source0:       http://www.apache.org/dist/%{name}/v%{version}/%{name}-%{version}-src.tar.gz
 # wget -O tiles-master-3-pom.xml http://svn.apache.org/repos/asf/tiles/maven/tags/tiles-master-3/pom.xml
 Source1:       %{name}-master-%{master_version}-pom.xml
